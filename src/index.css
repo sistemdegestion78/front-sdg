@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Base para interfaz consistente */
+body {
+  @apply antialiased text-gray-800 bg-slate-50;
+}
+
+/* Focus visible para accesibilidad */
+input:focus,
+button:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  @apply outline-none ring-2 ring-offset-2 ring-emerald-500/50;
+}
+
+/* ── SweetAlert2 — tema personalizado ────────────────────────── */
+.swal2-popup {
+  border-radius: 1rem !important;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+  padding: 2rem !important;
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.18) !important;
+}
+
+.swal2-title {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+
+.swal2-html-container,
+.swal2-content {
+  font-size: 0.875rem !important;
+  color: #475569 !important;
+}
+
+/* Botón de confirmación — emerald */
+.swal2-confirm {
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  padding: 0.6rem 1.25rem !important;
+  background-color: #059669 !important;
+  box-shadow: 0 1px 3px 0 rgb(5 150 105 / 0.3) !important;
+}
+.swal2-confirm:hover {
+  background-color: #10b981 !important;
+}
+
+/* Botón de cancelar — slate */
+.swal2-cancel {
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  font-size: 0.875rem !important;
+  padding: 0.6rem 1.25rem !important;
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+}
+.swal2-cancel:hover {
+  background-color: #e2e8f0 !important;
+}
+
+/* Toast */
+.swal2-toast {
+  border-radius: 0.75rem !important;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif !important;
+  box-shadow: 0 10px 30px -5px rgb(0 0 0 / 0.12) !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.swal2-toast .swal2-title {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  color: #0f172a !important;
+}
+
+.swal2-toast .swal2-html-container {
+  font-size: 0.8rem !important;
+  color: #64748b !important;
+}
+
+/* Barra de progreso del timer */
+.swal2-timer-progress-bar {
+  background: #059669 !important;
+}
