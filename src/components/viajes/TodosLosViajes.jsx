@@ -199,6 +199,7 @@ export function TodosLosViajes() {
             <label className="text-xs font-medium text-slate-600 sm:text-sm">Placa</label>
             <input
               type="text"
+              autoComplete="off"
               value={filtroPlaca}
               onChange={(e) => setFiltroPlaca(e.target.value)}
               placeholder="Filtrar"
@@ -209,6 +210,7 @@ export function TodosLosViajes() {
             <label className="text-xs font-medium text-slate-600 sm:text-sm">Empresa</label>
             <input
               type="text"
+              autoComplete="off"
               value={filtroEmpresa}
               onChange={(e) => setFiltroEmpresa(e.target.value)}
               placeholder="Filtrar"
@@ -219,6 +221,7 @@ export function TodosLosViajes() {
             <label className="text-xs font-medium text-slate-600 sm:text-sm">Manifiesto</label>
             <input
               type="text"
+              autoComplete="off"
               value={filtroManifiesto}
               onChange={(e) => setFiltroManifiesto(e.target.value)}
               placeholder="Nº"

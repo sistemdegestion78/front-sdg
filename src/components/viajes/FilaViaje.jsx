@@ -17,6 +17,7 @@ export function FilaViaje({
       <td className={tdClass}>
         <input
           type="date"
+          autoComplete="off"
           value={row.fecha}
           onChange={(e) => onChange(index, 'fecha', e.target.value)}
           className={INPUT_BASE}
@@ -26,6 +27,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={row.manifiesto}
           onChange={(e) => onChange(index, 'manifiesto', e.target.value)}
           className={`${INPUT_BASE} ${INPUT_MANIFIESTO}`}
@@ -34,6 +36,7 @@ export function FilaViaje({
       <td className={tdClass}>
         <input
           type="text"
+          autoComplete="off"
           value={row.viaje}
           onChange={(e) => onChange(index, 'viaje', e.target.value)}
           className={`${INPUT_BASE} ${INPUT_VIAJE}`}
@@ -43,6 +46,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.valorViaje)}
           onChange={(e) => onChange(index, 'valorViaje', parseNumInput(e.target.value))}
           placeholder="0"
@@ -53,6 +57,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.rteFuente)}
           onChange={(e) => onChange(index, 'rteFuente', parseNumInput(e.target.value))}
           placeholder="0"
@@ -63,6 +68,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.rteIca)}
           onChange={(e) => onChange(index, 'rteIca', parseNumInput(e.target.value))}
           placeholder="0"
@@ -73,6 +79,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.descuentoEmpresa)}
           onChange={(e) => onChange(index, 'descuentoEmpresa', parseNumInput(e.target.value))}
           placeholder="0"
@@ -83,6 +90,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.descuentoTotal)}
           onChange={(e) => onChange(index, 'descuentoTotal', parseNumInput(e.target.value))}
           placeholder="0"
@@ -98,6 +106,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.anticipo)}
           onChange={(e) => onChange(index, 'anticipo', parseNumInput(e.target.value))}
           placeholder="0"
@@ -108,6 +117,7 @@ export function FilaViaje({
         <input
           type="text"
           inputMode="numeric"
+          autoComplete="off"
           value={formatNum(row.saldo)}
           onChange={(e) => onChange(index, 'saldo', parseNumInput(e.target.value))}
           placeholder="0"

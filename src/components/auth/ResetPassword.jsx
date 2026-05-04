@@ -48,7 +48,7 @@ export function ResetPassword() {
           <p className="mt-1 text-sm text-slate-500">Ingresa tu nueva contraseña</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
+        <form onSubmit={handleSubmit} autoComplete="off" className="rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-200">
           {error && (
             <div className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600 ring-1 ring-red-200">
               {error}

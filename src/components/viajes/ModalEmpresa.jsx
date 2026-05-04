@@ -147,6 +147,7 @@ export function ModalEmpresa({ abierto, onContinuar, onCancelar }) {
                 <label className="mb-1.5 block text-xs font-medium text-slate-600">Nombre de la empresa</label>
                 <input
                   type="text"
+                  autoComplete="off"
                   value={nuevaEmpresa}
                   onChange={(e) => { setNuevaEmpresa(e.target.value); setError(null) }}
                   placeholder="Ej: Transportes ABC"
@@ -160,6 +161,7 @@ export function ModalEmpresa({ abierto, onContinuar, onCancelar }) {
                     type="number"
                     step="0.1"
                     min="0"
+                    autoComplete="off"
                     value={rteFuente}
                     onChange={(e) => { setRteFuente(e.target.value); setError(null) }}
                     placeholder="Ej: 1"
@@ -172,6 +174,7 @@ export function ModalEmpresa({ abierto, onContinuar, onCancelar }) {
                     type="number"
                     step="0.1"
                     min="0"
+                    autoComplete="off"
                     value={rteIca}
                     onChange={(e) => { setRteIca(e.target.value); setError(null) }}
                     placeholder="Ej: 0.6"

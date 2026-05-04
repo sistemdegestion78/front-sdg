@@ -128,6 +128,7 @@ export function ModalPlaca({ abierto, onContinuar, onCancelar }) {
             <div className="flex gap-2">
               <input
                 type="text"
+                autoComplete="off"
                 value={nuevaPlaca}
                 onChange={(e) => { setNuevaPlaca(e.target.value.toUpperCase()); setError(null) }}
                 onKeyDown={handleKeyDown}

@@ -63,7 +63,7 @@ export const DASHBOARD_DEMO = {
 }
 
 export const INPUT_BASE =
-  'w-full min-w-[90px] rounded-lg border border-slate-300 px-2.5 py-2 text-sm text-slate-800 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 box-border'
+  'w-full min-w-[90px] rounded-lg border border-slate-300 px-2.5 py-2 text-sm text-slate-900 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500 box-border'
 export const INPUT_MANIFIESTO = 'min-w-[140px]'
 export const INPUT_VIAJE = 'min-w-[260px]'
 

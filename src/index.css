@@ -9,6 +9,14 @@ body {
   @apply antialiased text-gray-800 bg-slate-50;
 }
 
+/* Desactivar autocompletado del navegador en todos los inputs */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 /* Focus visible para accesibilidad */
 input:focus,
 button:focus-visible,
