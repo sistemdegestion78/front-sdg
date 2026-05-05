@@ -105,7 +105,7 @@ export function PantallaGastos({ viaje, index, gastos, empresaTransportadora, on
                     const precio = parseNumInput(e.target.value)
                     onCambiarGasto(index, 'acpmPrecioGalon', precio)
                     const galones = toNum(gastos.acpmGalones)
-                    const total = toNum(precio) * galones
+                    const total = Math.round(toNum(precio) * galones)
                     onCambiarGasto(index, 'acpm', String(total))
                   }}
                   className={INPUT_BASE}
@@ -116,14 +116,14 @@ export function PantallaGastos({ viaje, index, gastos, empresaTransportadora, on
                 <label className="text-xs font-medium text-slate-600">Galones</label>
                 <input
                   type="text"
-                  inputMode="numeric"
+                  inputMode="decimal"
                   autoComplete="off"
-                  value={formatNum(gastos.acpmGalones)}
+                  value={gastos.acpmGalones ?? ''}
                   onChange={(e) => {
-                    const galones = parseNumInput(e.target.value)
+                    const galones = parseNumInput(e.target.value, true)
                     onCambiarGasto(index, 'acpmGalones', galones)
                     const precio = toNum(gastos.acpmPrecioGalon)
-                    const total = precio * toNum(galones)
+                    const total = Math.round(precio * toNum(galones))
                     onCambiarGasto(index, 'acpm', String(total))
                   }}
                   className={INPUT_BASE}

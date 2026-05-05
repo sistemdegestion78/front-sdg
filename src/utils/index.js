@@ -10,7 +10,13 @@ export function formatNum(val) {
   return toNum(val).toLocaleString('es-CO')
 }
 
-export function parseNumInput(str) {
+export function parseNumInput(str, allowDecimal = false) {
+  if (allowDecimal) {
+    const cleaned = str.replace(/[^\d.,]/g, '').replace(',', '.')
+    const parts = cleaned.split('.')
+    if (parts.length <= 2) return cleaned
+    return parts[0] + '.' + parts.slice(1).join('')
+  }
   return str.replace(/\D/g, '')
 }
 
