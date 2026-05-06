@@ -26,18 +26,33 @@ function ViajesLayout() {
   const [searchParams, setSearchParams] = useSearchParams()
   const placaDecoded = decodeURIComponent(placa || '')
   const empresaDecoded = decodeURIComponent(empresa || '')
+  const storageKey = `ultimoMes_${placaDecoded}_${empresaDecoded}`
   const mes = useMemo(() => {
     const m = searchParams.get('mes')
-    if (m == null || m === '') return mesActual
+    if (m == null || m === '') {
+      const guardado = localStorage.getItem(storageKey)
+      if (guardado) {
+        const parsed = JSON.parse(guardado)
+        return parsed.mes || mesActual
+      }
+      return mesActual
+    }
     const n = parseInt(m, 10)
     return Number.isNaN(n) || n < 1 || n > 12 ? mesActual : n
-  }, [searchParams])
+  }, [searchParams, storageKey])
   const anio = useMemo(() => {
     const a = searchParams.get('anio')
-    if (a == null || a === '') return anioActual
+    if (a == null || a === '') {
+      const guardado = localStorage.getItem(storageKey)
+      if (guardado) {
+        const parsed = JSON.parse(guardado)
+        return parsed.anio || anioActual
+      }
+      return anioActual
+    }
     const n = parseInt(a, 10)
     return Number.isNaN(n) ? anioActual : n
-  }, [searchParams])
+  }, [searchParams, storageKey])
   const { filas, agregarFila, cambiarCelda, cambiarGasto, quitarFila, guardarEnBackend, guardando, exportarExcel } = useViajes(
     placaDecoded,
     empresaDecoded,
@@ -50,6 +65,7 @@ function ViajesLayout() {
     params.set('mes', String(nuevoMes))
     params.set('anio', String(nuevoAnio))
     setSearchParams(params)
+    localStorage.setItem(storageKey, JSON.stringify({ mes: nuevoMes, anio: nuevoAnio }))
   }
   const abrirGastos = (index) => {
     const q = window.location.search || `?mes=${mes}&anio=${anio}`

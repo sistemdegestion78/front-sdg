@@ -49,11 +49,11 @@ export function TodosLosViajes() {
         }
       }
 
-      // Ordenar por fecha descendente
+      // Ordenar por fecha ascendente (más antigua primero)
       todosLosViajes.sort((a, b) => {
         const fechaA = new Date(a.fecha || '1900-01-01')
         const fechaB = new Date(b.fecha || '1900-01-01')
-        return fechaB - fechaA
+        return fechaA - fechaB
       })
 
       setViajes(todosLosViajes)

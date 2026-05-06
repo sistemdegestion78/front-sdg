@@ -3,6 +3,61 @@ import { useNavigate } from 'react-router-dom'
 import { MESES } from '../../constants'
 import { apiFetch } from '../../utils/api'
 
+function AccesoRapido({ navigate }) {
+  const [placas, setPlacas] = useState([])
+  const [empresas, setEmpresas] = useState([])
+  const [placa, setPlaca] = useState('')
+  const [empresa, setEmpresa] = useState('')
+
+  useEffect(() => {
+    apiFetch('/api/placas').then(r => r.json()).then(setPlacas).catch(() => {})
+    apiFetch('/api/empresas').then(r => r.json()).then(data => setEmpresas(data.map(e => e.nombre))).catch(() => {})
+  }, [])
+
+  const irAViajes = () => {
+    if (!placa || !empresa) return
+    navigate(`/viajes/${encodeURIComponent(placa)}/${encodeURIComponent(empresa)}`)
+  }
+
+  return (
+    <div className="mb-6 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200 px-4 py-4 sm:px-6">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Acceso rápido</p>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:gap-4">
+        <div className="flex flex-col gap-1 flex-1">
+          <label className="text-xs font-medium text-slate-600">Placa</label>
+          <select
+            value={placa}
+            onChange={(e) => setPlaca(e.target.value)}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+          >
+            <option value="">Seleccionar placa</option>
+            {placas.map(p => <option key={p} value={p}>{p}</option>)}
+          </select>
+        </div>
+        <div className="flex flex-col gap-1 flex-1">
+          <label className="text-xs font-medium text-slate-600">Empresa</label>
+          <select
+            value={empresa}
+            onChange={(e) => setEmpresa(e.target.value)}
+            className="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30"
+          >
+            <option value="">Seleccionar empresa</option>
+            {empresas.map(e => <option key={e} value={e}>{e}</option>)}
+          </select>
+        </div>
+        <button
+          type="button"
+          onClick={irAViajes}
+          disabled={!placa || !empresa}
+          className="shrink-0 rounded-lg bg-emerald-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-emerald-500 disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          Ir a viajes
+        </button>
+      </div>
+    </div>
+  )
+}
+
 function formatMoney(n) {
   return n.toLocaleString('es-CO')
 }
@@ -185,6 +240,9 @@ export function Dashboard() {
           })}
         </div>
       </div>
+
+      {/* Acceso rápido a tabla de viajes */}
+      <AccesoRapido navigate={navigate} />
 
       {/* Resumen global compacto */}
       {global && !cargando && (
